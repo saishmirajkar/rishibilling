@@ -1,0 +1,155 @@
+/* On-screen invoice. Sizes are in mm/pt to mirror the PDF (see src/pdf/layout.ts). */
+
+.preview-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.sheet {
+  --blue: #3968b0;
+  --paper: #fffcf7;
+  --ink: #111111;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+  width: 210mm;
+  min-height: 297mm;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.12), 0 8px 24px rgb(0 0 0 / 0.08);
+}
+
+.sheet .t {
+  position: absolute;
+  line-height: 1;
+  white-space: nowrap;
+}
+.sheet .light { font-weight: 300; }
+.sheet .regular { font-weight: 400; }
+.sheet .medium { font-weight: 500; }
+.sheet .white { color: #fff; }
+
+.sheet-header {
+  position: relative;
+  height: 42.3mm;
+  flex: none;
+}
+
+.logo-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 39.5mm;
+  height: 42.3mm;
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-box img {
+  max-width: 25mm;
+  max-height: 25mm;
+}
+
+.bill-row {
+  display: flex;
+  flex: none;
+}
+
+.bill-box {
+  position: relative;
+  width: 113.4mm;
+  min-height: 34.9mm;
+  box-sizing: border-box;
+  background: var(--blue);
+  color: #fff;
+  padding: 3.86mm 3.3mm 4.67mm 37.1mm;
+}
+
+.customer-lines {
+  font-size: 10.5pt;
+  line-height: 5.27mm;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.meta-box {
+  position: relative;
+  flex: 1;
+  border-top: 0.3mm solid #1e1a17;
+  border-bottom: 0.3mm solid #1e1a17;
+  margin-top: -0.15mm;
+}
+
+.items-wrap {
+  margin-left: 19.3mm;
+  width: 173.7mm;
+  flex: none;
+}
+
+.items {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.items th {
+  font-weight: 500;
+  font-size: 11.5pt;
+  line-height: 1;
+  padding: 2mm 1mm 1.6mm;
+  text-align: center;
+  border-bottom: 0.3mm solid #1e1a17;
+}
+.items th.left { text-align: left; padding-left: 2mm; }
+.items th.right { text-align: right; padding-right: 0.3mm; }
+
+.items td {
+  font-weight: 500;
+  font-size: 11.5pt;
+  line-height: 1.3;
+  padding: 2.35mm 1mm 2.5mm;
+  text-align: center;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.items td.idx,
+.items td.desc {
+  font-weight: 300;
+  font-size: 13.5pt;
+  text-align: left;
+}
+.items td.idx { padding-left: 0.5mm; padding-right: 0; }
+.items td.desc { white-space: pre-wrap; }
+.items td.right { text-align: right; padding-right: 0.3mm; }
+
+.tail {
+  position: relative;
+  flex: none;
+}
+
+.soft-rule {
+  position: absolute;
+  left: 19.3mm;
+  width: 173.7mm;
+  border-top: 0.25mm solid #aaa8a5;
+}
+
+.spacer { flex: 1; }
+
+.notes {
+  position: relative;
+  flex: none;
+}
+
+.sheet-footer {
+  position: relative;
+  flex: none;
+  background: var(--blue);
+}
